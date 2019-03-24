@@ -5,18 +5,18 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Animal.findAll", query = "select a from Animal as a")
+        @NamedQuery(name = "ZooKeeper.findAll", query = "select a from ZooKeeper as a")
 })
-@Table(name = "Animal")
-@Getter @Setter
-public class Animal implements Serializable {
+@Table(name = "ZooKeeper")
+@Getter
+@Setter
+public class ZooKeeper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,24 +25,18 @@ public class Animal implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="Building_Id")
-    private Building building;
+    @ManyToMany(mappedBy = "zooKeeper")
+    private List<Animal> animals = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name="Animal_ZooKeeper")
-    private List<ZooKeeper> zooKeeper = new ArrayList<>();
-
-    public Animal() {
-    }
+    public ZooKeeper() {}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Animal animal = (Animal) o;
-        return Objects.equals(id, animal.id) &&
-                Objects.equals(name, animal.name);
+        ZooKeeper zooKeeper = (ZooKeeper) o;
+        return Objects.equals(id, zooKeeper.id) &&
+                Objects.equals(name, zooKeeper.name);
     }
 
     @Override

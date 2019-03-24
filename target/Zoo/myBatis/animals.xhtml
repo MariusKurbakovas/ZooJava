@@ -3,19 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+      xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head/>
 <h:body>
-    <h2>Animals:</h2>
+    <h2>Animals in building '#{animalsForBuildingMyBatis.building.name}':</h2>
     <ol>
-        <ui:repeat value="#{animalsMyBatis.allAnimals}" var="animal">
-            <li><h:link value="#{animal.name}" /></li> <!--outcome="animals?cageId=#{animal.id}"-->
+        <ui:repeat value="#{animalsForBuildingMyBatis.animalsForBuilding}" var="animal">
+            <li>#{animal.name}</li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{animalsMyBatis.animalToCreate.name}" required="true" />
-        <h:commandButton value="Add new animal" action="#{animalsMyBatis.createAnimal}" />
+        <h:inputText value="#{animalsForBuildingMyBatis.animalToCreate.name}" required="true" />
+        <h:commandButton value="Add new animal to the building" action="#{animalsForBuildingMyBatis.createAnimal}">
+            <f:param name="buildingId" value="#{animalsForBuildingMyBatis.building.id}" />
+        </h:commandButton>
     </h:form>
-    <h:link value="Back to index" outcome="/index"/>
+    <h:link outcome="/myBatis/buildings" value="Back to buildings page"/>
 </h:body>
 </html>

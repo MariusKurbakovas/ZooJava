@@ -5,6 +5,8 @@
 <configuration>
     <typeAliases>
         <typeAlias type="zoopark.mybatis.model.Animal" alias="Animal"/>
+        <typeAlias type="zoopark.mybatis.model.Building" alias="Building"/>
+        <typeAlias type="zoopark.mybatis.model.ZooKeeper" alias="ZooKeeper"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -16,5 +18,7 @@
     </environments>
     <mappers>
         <mapper resource="mybatis.xml/AnimalMapper.xml"/>
+        <mapper resource="mybatis.xml/BuildingMapper.xml"/>
+        <mapper resource="mybatis.xml/ZooKeeperMapper.xml"/>
     </mappers>
 </configuration>

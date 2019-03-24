@@ -12,11 +12,12 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Animal.findAll", query = "select a from Animal as a")
+        @NamedQuery(name = "Building.findAll", query = "select a from Building as a")
 })
-@Table(name = "Animal")
-@Getter @Setter
-public class Animal implements Serializable {
+@Table(name = "Building")
+@Getter
+@Setter
+public class Building implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,24 +26,19 @@ public class Animal implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="Building_Id")
-    private Building building;
+    @OneToMany(mappedBy = "building")
+    private List<Animal> animals = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name="Animal_ZooKeeper")
-    private List<ZooKeeper> zooKeeper = new ArrayList<>();
-
-    public Animal() {
+    public Building() {
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Animal animal = (Animal) o;
-        return Objects.equals(id, animal.id) &&
-                Objects.equals(name, animal.name);
+        Building building = (Building) o;
+        return Objects.equals(id, building.id) &&
+                Objects.equals(name, building.name);
     }
 
     @Override

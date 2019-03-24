@@ -8,14 +8,14 @@
 <h:body>
     <h2>Buildings:</h2>
     <ol>
-        <ui:repeat value="#{buildings.allBuildings}" var="building">
+        <ui:repeat value="#{buildingsMyBatis.allBuildings}" var="building">
             <li><h:link value="#{building.name}" outcome="animals?buildingId=#{building.id}"/></li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText  value="#{buildings.buildingToCreate.name}" required="true" />
-        <h:commandButton value="Add new building" action="#{buildings.createBuilding}" />
+        <h:inputText  value="#{buildingsMyBatis.buildingToCreate.name}" required="true" />
+        <h:commandButton value="Add new building" action="#{buildingsMyBatis.createBuilding}" />
     </h:form>
-    <h:link outcome="myBatis/buildings" value="MyBatis implementation"/>
+    <h:link outcome="/index" value="Back to index"/>
 </h:body>
 </html>
