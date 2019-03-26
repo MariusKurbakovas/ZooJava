@@ -25,7 +25,7 @@ public class Animal implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="Building_Id")
     private Building building;
 
