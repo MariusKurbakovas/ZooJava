@@ -22,4 +22,8 @@ public class AnimalsDAO {
     }
 
     public void persist(Animal animal) { this.em.persist(animal);}
+
+    public Animal findOne(Integer id) { return em.find(Animal.class, id); }
+
+    public Animal update(Animal animal) { return em.merge(animal); }
 }

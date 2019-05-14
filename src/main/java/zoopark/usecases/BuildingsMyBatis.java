@@ -14,7 +14,6 @@ import java.util.List;
 @Model
 public class BuildingsMyBatis {
     public BuildingsMyBatis() {
-
     }
 
     @Inject

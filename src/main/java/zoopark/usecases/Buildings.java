@@ -3,6 +3,7 @@ package zoopark.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import zoopark.entities.Building;
+import zoopark.interceptors.LogAspect;
 import zoopark.persistance.BuildingsDAO;
 
 import javax.annotation.PostConstruct;
@@ -33,6 +34,7 @@ public class Buildings {
     }
 
     @Transactional
+    @LogAspect
     public String createBuilding(){
         this.buildingsDAO.persist(buildingToCreate);
         return "index?faces-redirect=true";

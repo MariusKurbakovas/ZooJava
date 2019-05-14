@@ -10,7 +10,9 @@
     <h2>Animals in building '#{animalsForBuilding.building.name}':</h2>
     <ol>
         <ui:repeat value="#{animalsForBuilding.building.animals}" var="animal">
-            <li>#{animal.name}</li>
+            <li>
+                <h:link value="#{animal.name}" outcome="animalDetails?animalId=#{animal.id}" />
+            </li>
         </ui:repeat>
     </ol>
     <h:form>

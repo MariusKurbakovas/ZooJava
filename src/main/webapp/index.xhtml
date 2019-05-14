@@ -16,6 +16,13 @@
         <h:inputText  value="#{buildings.buildingToCreate.name}" required="true" />
         <h:commandButton value="Add new building" action="#{buildings.createBuilding}" />
     </h:form>
+    <h:form>
+        <h:outputText value="#{doSomeLongOperation.longOperationStatus}" />
+        <h:commandButton value="Do a long operation?"
+                         disabled="#{doSomeLongOperation.longOperationRunning}"
+                         action="#{doSomeLongOperation.doLongOperation()}">
+        </h:commandButton>
+    </h:form>
     <h:link outcome="myBatis/buildings" value="MyBatis implementation"/>
 </h:body>
 </html>

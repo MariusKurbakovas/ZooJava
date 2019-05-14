@@ -33,6 +33,10 @@ public class Animal implements Serializable {
     @JoinTable(name="Animal_ZooKeeper")
     private List<ZooKeeper> zooKeeper = new ArrayList<>();
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     public Animal() {
     }
 
